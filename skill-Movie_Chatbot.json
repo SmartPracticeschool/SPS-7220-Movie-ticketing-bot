@@ -1,8 +1,32 @@
 {
   "intents": [
     {
+      "intent": "book",
+      "examples": [
+        {
+          "text": "book the movie"
+        },
+        {
+          "text": "can you book the ticket"
+        },
+        {
+          "text": "I want to book the movie"
+        }
+      ],
+      "description": "booking the ticket"
+    },
+    {
       "intent": "greeting",
       "examples": [
+        {
+          "text": "GM"
+        },
+        {
+          "text": "Good Evening"
+        },
+        {
+          "text": "Good Morning"
+        },
         {
           "text": "Hello"
         },
@@ -17,9 +41,27 @@
         },
         {
           "text": "OKAY"
+        },
+        {
+          "text": "Welcome"
         }
       ],
       "description": "Different ways to greet the bot"
+    },
+    {
+      "intent": "movie",
+      "examples": [
+        {
+          "text": "can you show me the movies"
+        },
+        {
+          "text": "list of movies"
+        },
+        {
+          "text": "movies list"
+        }
+      ],
+      "description": "movies list"
     },
     {
       "intent": "otp",
@@ -28,7 +70,7 @@
           "text": "12AB"
         }
       ],
-      "description": ""
+      "description": "OTP generation"
     },
     {
       "intent": "price",
@@ -40,7 +82,7 @@
           "text": "Price of the seat"
         }
       ],
-      "description": ""
+      "description": "Total Cost"
     },
     {
       "intent": "seats",
@@ -64,7 +106,7 @@
           "text": "6"
         }
       ],
-      "description": ""
+      "description": "Seats required"
     },
     {
       "intent": "thankyou",
@@ -103,10 +145,21 @@
           "text": "10:00 PM"
         }
       ],
-      "description": ""
+      "description": "Time slot"
     }
   ],
   "entities": [
+    {
+      "entity": "book",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "book",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
     {
       "entity": "cities",
       "values": [
@@ -128,6 +181,11 @@
         {
           "type": "synonyms",
           "value": "Erode",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Hyderabad",
           "synonyms": []
         }
       ],
@@ -319,6 +377,14 @@
                     "text": "Coimbatore"
                   }
                 }
+              },
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
               }
             ],
             "response_type": "option"
@@ -392,6 +458,14 @@
                     "text": "Bangalore"
                   }
                 }
+              },
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
               }
             ],
             "response_type": "option"
@@ -401,7 +475,7 @@
       "conditions": "@movie:(Robo 2.0-TAMIL)",
       "digress_in": "does_not_return",
       "dialog_node": "node_2_1603037636448",
-      "previous_sibling": "node_9_1602599787216"
+      "previous_sibling": "node_6_1603881310804"
     },
     {
       "type": "standard",
@@ -456,6 +530,14 @@
                     "text": "Chennai"
                   }
                 }
+              },
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
               }
             ],
             "response_type": "option"
@@ -507,6 +589,14 @@
                 "value": {
                   "input": {
                     "text": "Bangalore"
+                  }
+                }
+              },
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
                   }
                 }
               }
@@ -563,6 +653,14 @@
                     "text": "Bangalore"
                   }
                 }
+              },
+              {
+                "label": "Hyderabad",
+                "value": {
+                  "input": {
+                    "text": "Hyderabad"
+                  }
+                }
               }
             ],
             "response_type": "option"
@@ -597,7 +695,7 @@
           {
             "values": [
               {
-                "text": "What is your payment mode?"
+                "text": "What is your payment mode? (UPI / Cash / Net banking)"
               }
             ],
             "response_type": "text",
@@ -697,6 +795,30 @@
       "conditions": "@sys-number",
       "dialog_node": "node_5_1603039248558",
       "previous_sibling": "node_2_1602776943010"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Movies Available: Robo 2.0 (Tamil), Darbar (Tamil), Avengers (English), Dil Bechara (Hindi),  KGF (Kannada)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1602599787216"
+      },
+      "conditions": "#movie",
+      "dialog_node": "node_6_1603881310804",
+      "previous_sibling": "node_9_1602599787216"
     },
     {
       "type": "standard",
