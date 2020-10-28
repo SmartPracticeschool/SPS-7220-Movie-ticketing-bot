@@ -23,6 +23,7 @@ https://web-chat.global.assistant.watson.cloud.ibm.com/preview.html?region=eu-gb
 Node-Red UI link:
 https://node-red-btnqr-2020-10-18.mybluemix.net/ui/
 
+Video Link: https://drive.google.com/file/d/1TRCta-lHlvztR1Su3p-VaN1jmiyXLO97/view?usp=sharing
 
 Learnt Basics about IBM Watson Assistant and Node Red.
 
